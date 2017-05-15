@@ -1,0 +1,37 @@
+<div class="card" >
+    <div class="toolbar bgc-green-700 tc-white-1">
+
+        <a href="#tableauDeBord">
+            <button class="btn btn--l btn--white btn--icon" >
+                <i class="mdi mdi-arrow-left"></i>
+            </button>
+        </a>
+
+        <!--Toolbar title-->
+        <span class="toolbar__label fs-title">Choisir son adversaire</span>
+
+
+    </div>
+</div>
+<div class="p+" flex-container="column" flex-align="space-between center">
+
+    <div flex-item flex-item-order="1">
+        <div class="p+">
+
+            <ul class="list">
+
+                <li class="card m+ p+" flex-container="column" flex-align="space-between center"
+                    ng-repeat="joueur in joueurs">
+
+                    <a ng-href="#listejoueurs/{{joueur}}">
+                        <lx-button lx-color="orange" lx-type="flat">{{joueur}}</lx-button>
+                    </a>
+
+                </li>
+
+            </ul>
+
+        </div>
+    </div>
+
+</div>

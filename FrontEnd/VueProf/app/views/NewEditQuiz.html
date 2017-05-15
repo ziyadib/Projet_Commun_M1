@@ -1,0 +1,190 @@
+<!--Toolbar-->
+<div class="card">
+    <div class="toolbar bgc-green-700 tc-white-1">
+
+        <!--Left Toolbar-->
+        <div class="toolbar__left mr+++">
+
+        </div>
+
+        <!--Toolbar title-->
+        <span class="toolbar__label fs-title">Revisator - Ajouter ou modifier un quiz</span>
+
+        <!--Toolbar Buttons-->
+        <div class="toolbar__right">
+
+
+            <!--Disconnect Button Button-->
+            <a href="#/">
+                <button class="btn btn--l btn--white btn--icon" lx-ripple lx-tooltip="Se déconnecter"
+                        tooltip-position="bottom">
+                    <i class="mdi mdi-logout"></i>
+                </button>
+            </a>
+
+        </div>
+
+    </div>
+</div>
+
+<!--Conteneur général-->
+<div flex-container="column">
+
+    <!--Card Ajouter un Quizz-->
+    <div flex-container="row">
+
+        <div flex-item="1">
+        </div>
+
+        <div flex-item="10">
+            <div class="card mt+++ ml+++ mr+++">
+
+                <!--Titre de la card-->
+                <span class="fs-title display-block mt++ ml mb text-center">Nouveau Quiz</span>
+
+                <!--Diviseur-->
+                <div class="divider divider--dark"></div>
+
+                <!--Titre du quizz et domaine-->
+                <div flex-container="row">
+                    <div flex-item class="ml">
+                        <lx-text-field label="Titre du quiz">
+                            <input type="text" ng-model="quiz.title">
+                        </lx-text-field>
+                    </div>
+                </div>
+
+                <!--Domaine et matière-->
+                <div flex-container="row">
+                    <div flex-item class="ml">
+                        <lx-select ng-model="quiz.year" placeholder="Niveau d'étude" choices="domaine"
+                                   floating-label>
+                            <lx-select-selected>
+                                {{ $selected.niveau}}
+                            </lx-select-selected>
+                            <lx-select-choices>
+                                {{ $choice.niveau }}
+                            </lx-select-choices>
+                            <span>{{setSelectedDomaine($selected.name)}}</span>
+                        </lx-select>
+                    </div>
+                    <div flex-item class="ml">
+                        <lx-select ng-model="quiz.matiere" placeholder="Matière" choices="matiere"
+                                   floating-label>
+                            <lx-select-selected>
+                                {{ $selected.nom }}
+                            </lx-select-selected>
+
+                            <lx-select-choices>
+                                {{ $choice.nom }}
+                            </lx-select-choices>
+                            <span>{{setSelectedMatiere($selected.name)}}</span>
+                        </lx-select>
+                    </div>
+                </div>
+            </div>
+
+
+            <!--Pour chaque question-->
+            <div ng-repeat="i in getNumberOfQuestions(numberOfQuestions) track by $index">
+
+                <div class="card mt+++ ml+++ mr+++">
+
+
+                    <span class="fs-title display-block mt++ ml mb text-center">Question {{$index+1}}</span>
+
+                    <div class="divider divider--dark"></div>
+
+                    <!--Titre de la question-->
+                    <div flex-container="row">
+                        <div flex-item class="ml">
+                            <lx-text-field label="Titre de la question {{$index+1}}">
+                                <input type="text" ng-model="quiz.questions[$index+1].questionTitle">
+                            </lx-text-field>
+                        </div>
+                    </div>
+
+                    <div flex-item class="ml">
+                        <lx-select ng-model="selects.selectedNbAnswer" placeholder="Nombre de réponse"
+                                   choices="nbAnswer"
+                                   floating-label>
+                            <lx-select-selected>
+                                {{ $selected.name}}
+                            </lx-select-selected>
+                            <lx-select-choices>
+                                {{ $choice.name }}
+                            </lx-select-choices>
+                            <span>{{setSelectedNbAnswer($index+1, $selected.name)}}</span>
+                        </lx-select>
+                    </div>
+
+
+                    <!--Réponses-->
+                    <div ng-repeat="j in getNbOfAnswer($index+1) track by $index" flex-container="row">
+                        <div flex-item class="ml">
+                            <lx-text-field label="Réponse {{$index+1}}">
+                                <input type="text" ng-model="quiz.questions[$parent.$index+1].questionAnswer[$index+1]">
+                            </lx-text-field>
+                        </div>
+                    </div>
+
+                    <!--Bonnes réponses-->
+
+                    <div flex-container="row">
+                        <span class="fs-subhead display-block mt++ ml mb">Définissez la ou les bonnes réponses : </span>
+                    </div>
+
+                    <div flex-container="row">
+                        <div flex-item ng-repeat="j in getNbOfAnswer($index+1) track by $index">
+                            <div flex-item class="ml mb">
+                                <lx-checkbox ng-model="quiz.questions[$parent.$index+1].correctAnswer[$index+1]">Réponse {{$index+1}}</lx-checkbox>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+
+
+            <!--Bouton + et - -->
+            <div flex-container="row" class="mt++" flex-align="space-between center">
+                <div flex-item>
+                </div>
+
+                <div flex-item>
+                    <button class="btn btn--m btn--orange btn--fab" ng-click="increaseNumberOfQuestions()">
+                        <i class="mdi mdi-plus"></i>
+                    </button>
+                </div>
+                <div flex-item>
+                    <button class="btn btn--m btn--orange btn--fab" ng-click="decreaseNumberOfQuestions()">
+                        <i class="mdi mdi-minus"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!--Bouton Envoyer -->
+            <div flex-container="column" flex-align="space-between center">
+                <div flex-item class="mt mb+">
+                    <!--<a href="#/welcome">-->
+                        <button class="btn btn--m btn--orange btn--raised" ng-click="confirmCreation()">
+                            <span>Envoyer</span>
+                        </button>
+                    <!--</a>-->
+                </div>
+            </div>
+
+
+        </div>
+
+    </div>
+
+
+    <!--Permet de garder un espace en dessous une fois appuyé sur le +-->
+
+    <div flex-item="2" class="mt+++">
+    </div>
+
+</div>
+

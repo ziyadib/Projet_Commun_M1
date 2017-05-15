@@ -1,0 +1,46 @@
+<div class="card" >
+    <div class="toolbar bgc-green-700 tc-white-1">
+
+        <!--Toolbar title-->
+        <span class="toolbar__label fs-title">Page de connection</span>
+
+
+        <div class="toolbar__right">
+            <a ng-href="#inscription">
+                <button href="#" class="btn btn--m btn--white btn--flat" lx-ripple>S'inscrire</button>
+            </a>
+        </div>
+
+
+    </div>
+</div>
+
+
+<div class="p+">
+    <div class="card">
+
+
+        <lx-text-field label="Login" fixed-label="true" icon="account">
+            <input type="text" ng-model="connect.username">
+        </lx-text-field>
+
+        <lx-text-field label="Mot de passe" fixed-label="true" icon="key">
+            <input type="password" ng-model="connect.password">
+        </lx-text-field>
+
+
+
+        <div class="m+">
+                <button class="btn btn--m btn--orange btn--raised" ng-click="connexion()" lx-ripple>Se connecter</button>
+
+            <!--
+
+                        <a ng-click="submit()" class="card__actions">
+                            <button class="btn btn--m btn--orange btn--raised" lx-ripple>Se connecter post</button>
+                        </a>
+            -->
+        </div>
+    </div>
+</div>
+
+

@@ -1,0 +1,29 @@
+{
+  "name": "Revisator Vue Professeur",
+  "authors": [
+    "y"
+  ],
+  "description": "Vue professeur du site Revisator",
+  "main": "index.html",
+  "moduleType": [],
+  "license": "MIT",
+  "homepage": "index.html",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular-animate": "1.5.0",
+    "angular-route": "1.5.0",
+    "angular-aria": "1.5.0",
+    "angular-messages": "1.5.0",
+    "jquery": "2.1.4",
+    "angular": "1.5.0",
+    "lumx": "0.3.96",
+    "velocity": "1.2.3"
+  }
+}

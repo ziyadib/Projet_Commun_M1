@@ -1,0 +1,76 @@
+<div class="card">
+    <div class="toolbar bgc-green-700 tc-white-1">
+
+        <!--Toolbar title-->
+        <span class="toolbar__label fs-title">Inscription</span>
+
+    </div>
+</div>
+
+
+<form flex-container="column" flex-item>
+    <div flex-item class="ml card m++">
+        <form class="mt">
+            <lx-text-field label="Login" fixed-label="true" icon="account">
+                <input type="text" ng-model="inscEleve.username">
+            </lx-text-field>
+            <lx-text-field label="Nom" fixed-label="true" icon="account">
+                <input type="text" ng-model="inscEleve.nom">
+            </lx-text-field>
+            <lx-text-field label="Prénom" fixed-label="true" icon="account">
+                <input type="text" ng-model="inscEleve.prenom">
+            </lx-text-field>
+            <lx-text-field label="Mot de passe" fixed-label="true" icon="key">
+                <input type="password" ng-model="inscEleve.password">
+            </lx-text-field>
+            <lx-text-field label="Mot de passe" fixed-label="true" icon="key">
+                <input type="password" ng-model="inscEleve.confirmPassword">
+            </lx-text-field>
+            <lx-text-field label="E-mail (De votre école ou université)" fixed-label="true"
+                           icon="email">
+                <input type="text" ng-model="inscEleve.mail">
+            </lx-text-field>
+            <lx-text-field label="Confirmation E-mail" fixed-label="true" icon="email">
+                <input type="text" ng-model="inscEleve.confirmMail">
+            </lx-text-field>
+            <lx-date-picker model="inscProf.birthday" label="Pick a date" locale="fr" fixed-label="true"
+                            icon="calendar"></lx-date-picker>
+            <div flex-container="row">
+                <i flex-item class="mdi mdi-school mdi-24px mt+ ml"></i>
+                <lx-select flex-item="11" class="p- mt ml+++" icon="calendar" ng-model="inscEleve.school"
+                           lx-multiple="true" placeholder="Etablissement" choices="etablissements"
+                           fixed-label="true">
+                    <lx-select-selected>
+                        {{ $selected.nom}}
+                    </lx-select-selected>
+                    <lx-select-choices>
+                        {{ $choice.nom }}
+                    </lx-select-choices>
+                </lx-select>
+            </div>
+            <div flex-container="row">
+                <i flex-item class="mdi mdi-trending-up mdi-24px mt+ ml"></i>
+                <lx-select flex-item="11" class="p- mt ml+++ mb" icon="calendar" ng-model="inscEleve.year"
+                           lx-multiple="true" placeholder="Niveau d'étude" choices="year"
+                           fixed-label="true">
+                    <lx-select-selected>
+                        {{ $selected.niveau}}
+                    </lx-select-selected>
+                    <lx-select-choices>
+                        {{ $choice.niveau }}
+                    </lx-select-choices>
+                </lx-select>
+            </div>
+
+            <!--Bouton Créer un compte-->
+            <div flex-item class="ml mt mb+ text-center">
+                <button class="btn btn--m btn--orange btn--raised" ng-click="accountConfirmCreation()"
+
+                        ng-disabled="isCreateButtonDisabled()">
+                    <span>Créer le compte</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</form>
+

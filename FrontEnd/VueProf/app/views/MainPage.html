@@ -1,0 +1,103 @@
+<!--Toolbar-->
+<div class="card">
+    <div class="toolbar bgc-green-700 tc-white-1">
+
+        <!--Left Toolbar-->
+        <div class="toolbar__left mr+++">
+
+        </div>
+
+        <!--Toolbar title-->
+        <span class="toolbar__label fs-title">Revisator - Accueil</span>
+
+        <!--Toolbar Buttons-->
+        <div class="toolbar__right">
+
+            <!--Plus Button-->
+            <a href="#/newQuiz">
+            <button class="btn btn--l btn--white btn--icon" lx-ripple lx-tooltip="Ajouter un quiz"
+                    tooltip-position="bottom">
+
+                <i class="mdi mdi-plus"></i>
+            </button>
+            </a>
+
+            <!--Disconnect Button Button-->
+            <a href="#/">
+            <button class="btn btn--l btn--white btn--icon" lx-ripple lx-tooltip="Se déconnecter"
+                    tooltip-position="bottom">
+                <i class="mdi mdi-logout"></i>
+            </button>
+                </a>
+
+        </div>
+
+    </div>
+</div>
+
+
+<!--Conteneur générale-->
+
+<div flex-container="column">
+
+    <!--Message d'accueil-->
+    <div flex-container="row">
+
+        <div flex-item="1">
+        </div>
+
+        <div flex-item="10">
+            <div class="card mt+++ ml+++ mr+++">
+                <span class="fs-title display-block mt++ ml mb text-center">Bienvenue dans votre espace professeur !</span>
+
+                <div class="divider divider--dark"></div>
+                <span class="fs-body-1 display-block mt+ mb+ ml text-center">Dans cet espace, vous pouvez accéder à vos quiz, les modifier ou les supprimer, et en ajouter de nouveaux.</span>
+            </div>
+        </div>
+    </div>
+
+    <!--Card Mes Quiz -->
+
+    <div flex-container="row">
+
+        <div flex-item="1">
+        </div>
+        <div flex-item="10">
+            <div class="card mt+++ ml+++ mr+++">
+
+                <div class="mt++">
+                    <span class="fs-title display-block mb ml">Mes Quiz</span>
+
+                    <div class="divider divider--dark"></div>
+
+                    <!--List of quizzes-->
+                    <ul class="list mt">
+
+                        <!--Pour chaque quiz-->
+                        <div ng-repeat="quiz in quizList">
+
+                            <!--List items-->
+                            <li class="list-row list-row--has-separator">
+                                <div class="list-row__content">
+                                    <span class="fs-body-1">{{quiz.nom}}</span>
+                                </div>
+                                <div class="list-row__secondary">
+                                    <div flex-container="row">
+                                        <button class="btn btn--m btn--black btn--icon" ng-click="confirm(quiz, $index)" lx-ripple lx-tooltip="Supprimer">
+                                            <i class="mdi mdi-delete"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </li>
+                        </div>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--Permet de garder un espace en dessous si il y a bcp de quiz-->
+
+    <div flex-item="2" class="mt+++">
+    </div>
+</div>

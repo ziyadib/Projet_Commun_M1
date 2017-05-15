@@ -1,0 +1,58 @@
+<div class="card" >
+    <div class="toolbar bgc-green-700 tc-white-1">
+
+        <a href="#tableauDeBord">
+            <button class="btn btn--l btn--white btn--icon" >
+                <i class="mdi mdi-arrow-left"></i>
+            </button>
+        </a>
+
+        <!--Toolbar title-->
+        <span class="toolbar__label fs-title">Choisir sa matiere</span>
+
+
+    </div>
+</div>
+
+
+<!--
+<div class="p+" flex-container="row" flex-gutter="24" flex-wrap>
+    <div flex-item="6">
+
+        <ul class="list mt++">
+
+            <li class="card m+ p+" flex-container="column" flex-align="space-between center" ng-repeat="matiere in matieres.matieres">
+                <div flex-item>
+                    <a ng-href="#listeQuizz/{{matiere.id}}">
+                        <lx-button lx-color="orange" lx-type="flat">{{matiere.intitule}}</lx-button>
+                    </a>
+                </div>
+            </li>
+
+        </ul>
+    </div>
+</div>
+-->
+
+<div class="p+" flex-container="column" flex-align="space-between center">
+
+    <div flex-item flex-item-order="1">
+        <div class="p+">
+
+            <ul class="list">
+
+                <li class="card m+ p+" flex-container="column" flex-align="space-between center"
+                    ng-repeat="matiere in matieres">
+
+                    <a ng-href="#listeQuizz/{{matiere.idMatiere}}">
+                        <lx-button lx-color="orange" lx-type="flat">{{matiere.nom}}</lx-button>
+                    </a>
+
+                </li>
+
+            </ul>
+
+        </div>
+    </div>
+
+</div>

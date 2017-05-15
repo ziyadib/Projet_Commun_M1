@@ -1,0 +1,31 @@
+<div class="card" >
+    <div class="toolbar bgc-green-700 tc-white-1">
+
+        <!--Toolbar title-->
+        <span class="toolbar__label fs-title">Tableau de bord</span>
+
+
+        <div class="toolbar__right">
+            <a ng-href="#listeMatiere">
+                <button href="#" class="btn btn--m btn--white btn--flat" lx-ripple>Mode solo</button>
+            </a>
+            <a ng-href="#listeJoueursCo">
+                <button href="#" class="btn btn--m btn--white btn--flat" lx-ripple>Mode Multijoueurs</button>
+            </a>
+            <a ng-href="#statistique">
+                <button href="#" class="btn btn--m btn--white btn--flat" lx-ripple>Statistiques d&eacute;taill&eacute;es</button>
+            </a>
+        </div>
+
+
+    </div>
+</div>
+
+
+
+<div style="margin-top: 30px">
+    <canvas id="radar" class="chart chart-radar"
+            chart-data="data" chart-labels="labels">
+    </canvas>
+</div>
+>

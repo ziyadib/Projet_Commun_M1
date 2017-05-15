@@ -1,0 +1,12 @@
+1) Executer le script SQL, celui-ci va créer une base de données revisator contenant les tables et les données requises au fonctionnement de l'application
+2) Dans le ficheir server.js, à la ligne 9, entrez les login de votre base de données
+3) Plus bas dans le même fichier, modifiez le cors si l'appliation n'est pas lancée depuis localhost:80
+3) Ne pas oublier d'installer également les bower_components de la Vue Professeur situé dans /Revisator/FrontEnd/VueProf (Vue Etudiant et Vue Prof sont deux projets séparés)
+
+Si dans le formulaire d'inscriptions vous voyez apparaitre les établissements et le niveau d'étude dans les champs de sélection, alors l'application est bien connectée au serveur et à la base de données
+
+La base de données contient des quiz BAC + 3 dans une matière. Si vous voulez tester la fonction de réponse à un quiz rapidement, créez un compte avec BAC + 3 ou utilisez les logs breda/62auXQ8j.
+
+Pour visualiser un compte étudiant qui a déjà fait des quizz, utilisez langloiy/nEqy5N99
+
+GitHub : https://github.com/VRZ78/Projet-Commun
