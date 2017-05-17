@@ -1,11 +1,30 @@
-var http = require('http');
-var express = require('express');
-var app = express();
+//var express = require('express')();
+//var app = express();
 var mysql = require('mysql');
 var cors = require('express-cors');
 var bodyParser = require('body-parser');
 var userId;
 var userConnected =['kador','azatote','tahmirin'];
+//var http = require('http').Server(app);
+//var io = require('socket.io').(http);
+
+//-------------------socket io param------------
+
+/*var app = require('express')();
+var server = require('http').Server(app);
+var io = require('socket.io')(server);
+server.listen(8080);*/
+var express = require('express')
+  , http = require('http');
+//make sure you keep this order
+var app = express();
+var server = http.createServer(app);
+var io = require('socket.io').listen(server);
+
+server.listen(8080);
+//-------------------------
+
+
 var connection = mysql.createConnection({
 	host: 'localhost',
 	user: 'root',
@@ -433,6 +452,23 @@ app.get('/listeJoueursCo', function(req, res) {
         res.status(404).json("error");  
     
 });
+//                                      Socket io babe!
 
+/*io.on('connection', function (socket) {
+  socket.emit('news', { hello: 'world' });
+  socket.on('my other event', function (data) {
+    console.log(data);
+  });
+});*/
 
-app.listen(8080);
+io.sockets.on('connection', function (socket) {
+    console.log('Un client est connecté !');
+        socket.emit('message', 'Vous êtes bien connecté !');
+            socket.broadcast.emit('message', 'Un autre client vient de se connecter !');
+
+    socket.on('message', function (message) {
+        console.log('Un client me parle ! Il me dit : ' + message);
+    });
+});
+
+//app.listen(8080);

@@ -16,6 +16,7 @@
 <div class="p+" flex-container="column" flex-align="space-between center">
 
     <div flex-item flex-item-order="1">
+    Liste des joueurs connectés
         <div class="p+">
 
             <ul class="list">
@@ -23,7 +24,7 @@
                 <li class="card m+ p+" flex-container="column" flex-align="space-between center"
                     ng-repeat="joueur in joueurs">
 
-                    <a ng-href="#listejoueurs/{{joueur}}">
+                    <a ng-href="#duel">
                         <lx-button lx-color="orange" lx-type="flat">{{joueur}}</lx-button>
                     </a>
 

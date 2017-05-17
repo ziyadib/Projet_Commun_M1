@@ -7,9 +7,11 @@ var myApp = angular.module('myRevisator',
         'listeMatiereCtrl',
         'listeQuizzCtrl',
         'quizzCtrl',
+        'duelCtrl',
         'listeJoueursCoCtrl',
         'statistiqueCtrl',
-        'resultatCtrl'])
+        'resultatCtrl'/*,
+        'btford.socket-io'*/])
     .config(function ($httpProvider) {
         $httpProvider.interceptors.push(function ($q, sharedStorageService) {
             return {
@@ -23,6 +25,8 @@ var myApp = angular.module('myRevisator',
                 }
             };
         });
+    }).factory('mySocket', function (socketFactory) {
+        return socketFactory();
     }).factory('sharedStorageService', function () {
         var savedData = {};
 

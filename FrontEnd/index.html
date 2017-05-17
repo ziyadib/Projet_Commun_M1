@@ -11,7 +11,7 @@
         <link rel="stylesheet" href="bower_components/lumx/dist/lumx.css">
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
               rel="stylesheet">
-
+       <script type="text/javascript" src="http://localhost:8080/socket.io/socket.io.js"></script>
     </head>
     <body  ng-app="myRevisator">
 
@@ -60,7 +60,15 @@
     <script src="app/controlers/statistique.js"></script>
     <script src="app/controlers/resultatCtrl.js"></script>
     <script src="app/controlers/listeJoueursCoCtrl.js"></script>
-
+    <script src="app/controlers/duelCtrl.js"></script>
+     <!-- Socket mode 
+    <script>
+  var socket = io.connect('http://localhost:8080');
+  socket.on('news', function (data) {
+    console.log(data);
+    socket.emit('my other event', { my: 'data' });
+  });
+</script> -->
 
 
 </html>

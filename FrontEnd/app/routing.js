@@ -44,6 +44,10 @@ myApp.config(['$routeProvider', function ($routeProvider) {
         templateUrl: 'app/views/resultat.html',
         controller: 'resultatCtrl'
     });
+    $routeProvider.when('/duel', {
+        templateUrl: 'app/views/duel.html',
+        controller: 'duelCtrl'
+    });
     $routeProvider.otherwise({
         redirectTo: '/accueil'
     });
