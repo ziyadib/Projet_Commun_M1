@@ -68,12 +68,14 @@ app.get('/listeMatieres', function(req, res) {
 //_________________________________________________________pour récuperer la liste des quiz correspondant à la matiere choisie
 app.get('/listeQuizz/:id_matiere', function(req, res) {
 		res.status(200).json(req.currents_quizz);
+      //  console.log(req.currents_quizz);
 });
 
 app.param('id_matiere', function(req, res, next, id){
 	
-	userId = req.headers.authorization; //recuperation de l'id
-	connection.query("select * from quizz where Niveau_etude_idNiveau_etude = (select Niveau_etude_idNiveau_etude from compte where id= "+userId+") and Matiere_idMatiere="+id+" ;", function(err, rows, fileds){
+	userId =req.headers.authorization; //recuperation de l'id
+	//console.log("select * from quizz where Niveau_etude_idNiveau_etude = (select Niveau_etude_idNiveau_etude from compte where id= "+userId+") and Matiere_idMatiere="+id+" ;");
+    connection.query("select * from quizz where Niveau_etude_idNiveau_etude = (select Niveau_etude_idNiveau_etude from compte where id= "+userId+") and Matiere_idMatiere="+id+" ;", function(err, rows, fileds){
 	if(!err){
 		//"+userId+"
 		req.currents_quizz = rows;
@@ -463,21 +465,20 @@ app.get('/listeJoueursCo', function(req, res) {
 
 io.sockets.on('connection', function (socket, pseudo) {
     // Quand un client se connecte, on lui envoie un message
+    console.log("un client connecté a socket io");
     socket.emit('message', 'Vous êtes bien connecté !');
     // On signale aux autres clients qu'il y a un nouveau venu
     socket.broadcast.emit('listeMatieres', 'Un autre client vient de se connecter ! ');
-
     // Dès qu'on nous donne un pseudo, on le stocke en variable de session
     socket.on('petit_nouveau', function(pseudo) {
         socket.pseudo = pseudo;
     });
-
-    // Dès qu'on reçoit un "message" (clic sur le bouton), on le note dans la console
-    socket.on('message', function (message) {
-        // On récupère le pseudo de celui qui a cliqué dans les variables de session
-        console.log(socket.pseudo + ' me parle ! Il me dit : ' + message);
+   // socket.brodacast.emit('listeQuizz',"le choix du quizz par l hote est en cours");
+        socket.on('wichQuizz', function (message) {
+            console.log("diffusons le message de ready");
+        socket.broadcast.emit('ready',message);
     }); 
 });
-
+ 
 
 //app.listen(8080);

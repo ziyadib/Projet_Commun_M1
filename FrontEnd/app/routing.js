@@ -15,7 +15,7 @@ myApp.config(['$routeProvider', function ($routeProvider) {
         templateUrl: 'app/views/tableauDeBord.html',
         controller: 'tableauDeBordCtrl'
     });
-      $routeProvider.when('duel/listeQuizz', {
+    $routeProvider.when('/duel/listeQuizz', {
         templateUrl: 'app/views/listeQuizz.html',
         controller: 'duelCtrl'
     });
@@ -51,6 +51,14 @@ myApp.config(['$routeProvider', function ($routeProvider) {
     $routeProvider.when('/duel', {
         templateUrl: 'app/views/duel.html',
         controller: 'duelCtrl'
+    });
+    $routeProvider.when('/duel/listeQuizz/:idMatiere', {
+        templateUrl: 'app/views/duel/listeQuizz.html',
+        controller: 'duelListeQuizzCtrl'
+    });
+    $routeProvider.when('/duel/quizz/:idQuizz', {
+        templateUrl: 'app/views/duel/quizz.html',
+        controller: 'duelQuizzCtrl'
     });
     $routeProvider.otherwise({
         redirectTo: '/accueil'

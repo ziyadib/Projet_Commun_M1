@@ -25,7 +25,7 @@
                     ng-repeat="matiere in matieres">
 
                     <a ng-href="#duel/listeQuizz/{{matiere.idMatiere}}">
-                        <lx-button lx-color="orange" lx-type="flat" ng-click="loadQuizz()">{{matiere.nom}}</lx-button>
+                        <lx-button lx-color="orange" lx-type="flat" ng-click="loadQuizz(matiere.idMatiere)">{{matiere.nom}}</lx-button>
                     </a>
 
                 </li>

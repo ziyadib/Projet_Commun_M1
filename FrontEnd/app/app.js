@@ -11,6 +11,8 @@ var myApp = angular.module('myRevisator',
         'listeJoueursCoCtrl',
         'statistiqueCtrl',
         'resultatCtrl',
+        'duelQuizzCtrl',
+        'duelListeQuizzCtrl',
         'btford.socket-io'])
     .config(function ($httpProvider) {
         $httpProvider.interceptors.push(function ($q, sharedStorageService) {
@@ -26,7 +28,12 @@ var myApp = angular.module('myRevisator',
             };
         });
     }).factory('mySocket', function (socketFactory) {
-        return socketFactory();
+        /*var myIoSocket = io.connect('http://localhost:8080');
+
+        mySocket = socketFactory({
+        ioSocket: myIoSocket
+        });*/
+        return mySocket;
     }).factory('sharedStorageService', function () {
         var savedData = {};
 

@@ -1,6 +1,6 @@
 
 
-var duelCtrl = angular.module('duelCtrl', []);
+var duelCtrl = angular.module('duelCtrl', ['btford.socket-io']);
 duelCtrl.controller('duelCtrl', function ($scope,$http,$routeParams) {
     console.log("let's get ready socket io");
 
@@ -13,26 +13,39 @@ duelCtrl.controller('duelCtrl', function ($scope,$http,$routeParams) {
 
     socket.on('listeMatieres', function(messagex,socket) {
         $scope.Instruction1MP = "Choisissez votre matieres";
-        console.log("message1");
-        console.log($scope.message1);
-            console.log("on va commencer les choses sérieuses: recuperation de la liste de quizz pour le main player");
+        console.log("listeMAtieres");
+            console.log("recuperation de la liste de matieres pour le main player");
          $http.get('http://localhost:8080/listeMatieres').then(function(response){
             $scope.matieres=response.data;
             console.log($scope.matieres);
-
-            $scope.loadQuizz=function(){
-                console.log("loadquizz");
-                console.log("idMatiere:"+$routeParams.idMatiere);
-                $http.get('http://localhost:8080/listeQuizz/1'/*+$routeParams.idMatiere*/).then(function(response){
-                $scope.listeQuizz=response.data;
-                console.log("listequizz: "+ $scope.listeQuizz);
-                },function(reason){
-                    console.log(reason);
-                });
-            };
         });
         //alert(message);
     });
 
+     /*       $scope.loadQuizz=function(id){
+                
+                    console.log("recuperation de l'id quizz");
+                    console.log("idMatiere:");
+                    $http.get('http://localhost:8080/listeQuizz/1'/*+id+$routeParams.idMatiere).then(function(response){
+                        //console.log("response.data :"+response.data);
+                        var liste=response.data;
+                        console.log("liste"+liste);
+                        for(var i=0; i<liste.length();liste++){
+                            console.log("quizz:"+ liste[i]);
+                        }
+                        $scope.listeQuizz= liste;
+                    console.log("listequizz: "+ $scope.listeQuizz);
+
+                    },function(reason){
+                        console.log(reason);
+                    });
+              
+            };*/
+
+    socket.on('ready', function(message,socket) {
+        
+        console.log("notif hote choisi quizz"+message);
+        alert(message); 
+    });
 
 });
