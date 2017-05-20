@@ -16,7 +16,23 @@
 <div class="p+" flex-container="column" flex-align="space-between center">
 
      <div flex-item flex-item-order="1">
-        COUCOU: {{messageCo}}
+     {{Instruction1MP}}
+       <div class="p+">
+
+            <ul class="list">
+
+                <li class="card m+ p+" flex-container="column" flex-align="space-between center"
+                    ng-repeat="matiere in matieres">
+
+                    <a ng-href="#duel/listeQuizz/{{matiere.idMatiere}}">
+                        <lx-button lx-color="orange" lx-type="flat" ng-click="loadQuizz()">{{matiere.nom}}</lx-button>
+                    </a>
+
+                </li>
+
+            </ul>
+
+        </div>
     </div>
 
 </div>

@@ -15,6 +15,10 @@ myApp.config(['$routeProvider', function ($routeProvider) {
         templateUrl: 'app/views/tableauDeBord.html',
         controller: 'tableauDeBordCtrl'
     });
+      $routeProvider.when('duel/listeQuizz', {
+        templateUrl: 'app/views/listeQuizz.html',
+        controller: 'duelCtrl'
+    });
     $routeProvider.when('/listeMatiere', {
         templateUrl: 'app/views/listeMatiere.html',
         controller: 'listeMatiereCtrl'

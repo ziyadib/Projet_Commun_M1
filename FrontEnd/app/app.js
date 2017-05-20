@@ -10,8 +10,8 @@ var myApp = angular.module('myRevisator',
         'duelCtrl',
         'listeJoueursCoCtrl',
         'statistiqueCtrl',
-        'resultatCtrl'/*,
-        'btford.socket-io'*/])
+        'resultatCtrl',
+        'btford.socket-io'])
     .config(function ($httpProvider) {
         $httpProvider.interceptors.push(function ($q, sharedStorageService) {
             return {
