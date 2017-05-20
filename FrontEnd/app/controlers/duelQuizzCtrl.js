@@ -3,13 +3,17 @@
 
  */
 
-
 var duelQuizzCtrl = angular.module('duelQuizzCtrl', []);
 duelQuizzCtrl.controller('duelQuizzCtrl', function ($scope, $http, $routeParams,saveResultatQuizz) {
+    var socket = io.connect('http://localhost:8080');
 
     console.log("ID QUIZZ");
     console.log($routeParams);
+    //rajoutez si routeParams.idQuizz est undefiened recup via autre moyen
     $scope.idQuizz = $routeParams.idQuizz;
+    var id= $scope.idQuizz;
+    console.log("id:"+id);
+    socket.emit('thisQuizz',$scope.idQuizz);
 
     $http.get('http://localhost:8080/quizz/' + $routeParams.idQuizz).then(function (response) {
         $scope.quizz = response.data;

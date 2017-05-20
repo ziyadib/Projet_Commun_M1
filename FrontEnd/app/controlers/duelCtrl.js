@@ -44,8 +44,16 @@ duelCtrl.controller('duelCtrl', function ($scope,$http,$routeParams) {
 
     socket.on('ready', function(message,socket) {
         
-        console.log("notif hote choisi quizz"+message);
+        console.log("notif hote choisi quizz "+message);
         alert(message); 
     });
+
+    socket.on('letsgo', function(message,socket) {
+        //alert("on va essayer de rejoindre ce quizz"+ message);
+        console.log("tu recois pas letsgo ie pour changer de page");
+        console.log("voici l'idQuizz a charger: "+message);
+        document.location = 'http://localhost/#/duel/quizz/'+message;
+    });
+    
 
 });

@@ -478,6 +478,11 @@ io.sockets.on('connection', function (socket, pseudo) {
             console.log("diffusons le message de ready");
         socket.broadcast.emit('ready',message);
     }); 
+        socket.on('thisQuizz', function (message) {
+            console.log("diffusons l'id Quizz aux autre client");
+        socket.broadcast.emit('letsgo',message);
+    }); 
+
 });
  
 
