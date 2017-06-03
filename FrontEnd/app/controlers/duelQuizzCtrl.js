@@ -9,11 +9,11 @@ duelQuizzCtrl.controller('duelQuizzCtrl', function ($scope, $http, $routeParams,
 
     console.log("ID QUIZZ");
     console.log($routeParams);
-    //rajoutez si routeParams.idQuizz est undefiened recup via autre moyen
+    //
     $scope.idQuizz = $routeParams.idQuizz;
     var id= $scope.idQuizz;
     console.log("id:"+id);
-    socket.emit('thisQuizz',$scope.idQuizz);
+    socket.emit('thisQuizz',id);
 
     $http.get('http://localhost:8080/quizz/' + $routeParams.idQuizz).then(function (response) {
         $scope.quizz = response.data;

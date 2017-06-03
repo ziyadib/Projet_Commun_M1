@@ -4,7 +4,9 @@ var mysql = require('mysql');
 var cors = require('express-cors');
 var bodyParser = require('body-parser');
 var userId;
-var userConnected =['kador','azatote','tahmirin'];
+//------- mode multi joueur --------
+var userConnected =[/*'kador','azatote','tahmirin'*/];
+var resultats = [];
 //var http = require('http').Server(app);
 //var io = require('socket.io').(http);
 
@@ -447,7 +449,7 @@ app.post('/connexion', function(req, res) {
 
 //---------------------------------MODE MULTI JOUEURS--------------------------------------------
 app.get('/listeJoueursCo', function(req, res) {
-    userConnected =['kador','azatote','tahmirin'];
+    //userConnected =['kador','azatote','tahmirin'];
     if(typeof userConnected != 'undefined')
         res.status(200).json(userConnected);
     else
@@ -464,6 +466,7 @@ app.get('/listeJoueursCo', function(req, res) {
 });*/
 
 io.sockets.on('connection', function (socket, pseudo) {
+    
     // Quand un client se connecte, on lui envoie un message
     console.log("un client connecté a socket io");
     socket.emit('message', 'Vous êtes bien connecté !');
@@ -477,12 +480,24 @@ io.sockets.on('connection', function (socket, pseudo) {
         socket.on('wichQuizz', function (message) {
             console.log("diffusons le message de ready");
         socket.broadcast.emit('ready',message);
-    }); 
+        }); 
         socket.on('thisQuizz', function (message) {
             console.log("diffusons l'id Quizz aux autre client");
         socket.broadcast.emit('letsgo',message);
-    }); 
+        }); 
+        socket.on('ResultatQuizz',function(message){
+            console.log("Hey j'ai reçu les resultats les voici:"+message.bonneReponse);
+            resultats.push(message);
+            console.log("le tableau resultatS : "+resultats);
+                console.log("length"+resultats.length);
+            if(resultats.length > 1){ // si on a reçu les deux réponses de nos joueurs on diffuse pour affichage
+                    console.log("hey je broadcast les résultats petit!");
+                    socket.broadcast.emit("resultats",resultats);
+                    socket.emit("resultats",resultats);
+                    //comparer les resultats et afficher un message sympatoches si = match nul sinon mess pour gagnant et perdant
+            }
 
+        });
 });
  
 

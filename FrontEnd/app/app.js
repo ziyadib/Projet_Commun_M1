@@ -13,6 +13,7 @@ var myApp = angular.module('myRevisator',
         'resultatCtrl',
         'duelQuizzCtrl',
         'duelListeQuizzCtrl',
+        'duelResultatCtrl',
         'btford.socket-io'])
     .config(function ($httpProvider) {
         $httpProvider.interceptors.push(function ($q, sharedStorageService) {

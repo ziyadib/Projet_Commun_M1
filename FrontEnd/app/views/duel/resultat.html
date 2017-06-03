@@ -1,0 +1,104 @@
+<div class="card" >
+    <div class="toolbar bgc-green-700 tc-white-1">
+
+        <!--Toolbar title-->
+        <span class="toolbar__label fs-title">Resultat</span>
+
+        <div class="toolbar__right">
+             <a ng-href="#tableauDeBord">
+                <button href="#" class="btn btn--m btn--white btn--flat" lx-ripple>Retour au tableau de bord</button>
+            </a>
+        </div>
+
+    </div>
+</div>
+
+
+<div class=" p+" flex-container="column" flex-align="space-between center" style="height: 250px">
+
+
+    <div flex-item flex-item-order="1">
+
+        <div class="p+" ng-repeat="res in resultatPourHTML">
+
+
+            <div ng-if="res.estJuste == true">
+                <div class="p- bgc-green-500">
+                    <div class="card">
+                        <div class="p+">
+                            <strong class="fs-headline display-block">Question {{$index+1}}</strong>
+                            <span class="fs-subhead tc-black-2 display-block">{{res.intituleQuestion}}</span>
+                            <div class="paragraph fs-body-1 mt+">
+                                <p>
+                                    La/les bonne(s) réponse(s) sont : {{res.BonneReponse}}
+                                </p>
+                            </div>
+                            <div class="mt+">
+                                <button class="btn btn--m btn--orange btn--raised" ng-click="more('detail')"  lx-ripple>Détail</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div ng-if="res.estJuste == false">
+                <div class="p- bgc-red-500">
+                    <div class="card">
+                        <div class="p+">
+                            <strong class="fs-headline display-block">Question {{$index+1}}</strong>
+                            <span class="fs-subhead tc-black-2 display-block">{{res.intituleQuestion}}</span>
+                            <div class="paragraph fs-body-1 mt+">
+                                <p>
+                                    La/les bonne(s) réponse(s) sont : {{res.BonneReponse}}
+                                </p>
+                            </div>
+                            <div class="mt+">
+                                <button class="btn btn--m btn--orange btn--raised" ng-click="more('detail')"  lx-ripple>Détail</button>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <lx-dialog class="dialog dialog--l" id="detail" auto-close="true" onclose="closingDialog()"
+                       onscrollend="scrollEndDialog()">
+                <div class="dialog__header">
+                    <div class="toolbar bgc-light-green-500 pl++">
+                        <span class="toolbar__label tc-white fs-title">Detail</span>
+                    </div>
+                </div>
+                <div class="dialog__content p++">
+                    <p>Dans une prochaine mise à jours vous pourrez bénéficier de conseil avisé de vos professeur</p>
+                </div>
+
+                <div class="dialog__actions">
+                    <button class="btn btn--m btn--orange btn--raised" lx-ripple lx-dialog-close>J'ai compris</button>
+                </div>
+            </lx-dialog>
+
+        </div>
+
+    </div>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
