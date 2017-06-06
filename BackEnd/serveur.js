@@ -119,7 +119,7 @@ app.get('/listeQuizzProf',function(req,res){
 	if(!err)
 		res.status(200).json(rows);
 	else
-		res.status(404).json("error");	
+		res.status(404).json("error recup liste quizz");	
   });	
 });
 
@@ -417,7 +417,7 @@ app.post('/vuep/connexion', function(req, res) {
         console.log(userConnected);
         if(!err){
             if(rows.length > 0) {
-                res.sendStatus(200).json(rows);
+                res.status(200).json(rows);
                 console.log(userConnected);
             }
             else{

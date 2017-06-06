@@ -12,19 +12,28 @@
 
         <!--Toolbar Buttons-->
         <div class="toolbar__right">
-
-            <!--Plus Button-->
-            <a href="#/newQuiz">
-            <button class="btn btn--l btn--white btn--icon" lx-ripple lx-tooltip="Ajouter un quiz"
-                    tooltip-position="bottom">
-
-                <i class="mdi mdi-plus"></i>
-            </button>
-            </a>
-
+            <!-- Down direction -->
+            <lx-fab lx-direction="left">
+                <lx-fab-trigger>
+                    <lx-button lx-size="xl" lx-type="fab" lx-color="white" lx-tooltip="Add" lx-tooltip-position="bottom">
+                        <i class="mdi mdi-playlist_add"></i>
+                        <i class="mdi mdi-plus"></i>
+                    </lx-button>
+                </lx-fab-trigger>
+         
+                <lx-fab-actions>
+                    <lx-button lx-size="l" lx-color="black" href='#/newQuiz' lx-type="fab" lx-tooltip="creer un quizz" lx-tooltip-position="bottom">
+                        <i class="mdi mdi-plus"></i>
+                    </lx-button>
+                   
+                    <lx-button lx-size="l" lx-color="black" lx-type="fab" href='#/importQuizz' lx-tooltip="Importer un quizz" lx-tooltip-position="bottom">
+                        <i class="mdi mdi-package"></i>
+                    </lx-button>
+                </lx-fab-actions>
+            </lx-fab>
             <!--Disconnect Button Button-->
             <a href="#/">
-            <button class="btn btn--l btn--white btn--icon" lx-ripple lx-tooltip="Se déconnecter"
+            <button class="btn btn--xl btn--white btn--icon" lx-ripple lx-tooltip="Se déconnecter"
                     tooltip-position="bottom">
                 <i class="mdi mdi-logout"></i>
             </button>
@@ -83,6 +92,9 @@
                                 </div>
                                 <div class="list-row__secondary">
                                     <div flex-container="row">
+                                       <button class="btn btn--m btn--black btn--icon" ng-click="export(quiz)" lx-ripple lx-tooltip="export PDF">
+                                            <i class="mdi mdi-file-pdf"></i>
+                                        </button>
                                         <button class="btn btn--m btn--black btn--icon" ng-click="confirm(quiz, $index)" lx-ripple lx-tooltip="Supprimer">
                                             <i class="mdi mdi-delete"></i>
                                         </button>

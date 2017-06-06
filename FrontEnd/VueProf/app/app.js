@@ -14,6 +14,10 @@ app.config(function ($routeProvider) {
             controller: 'NewEditQuizController',
             templateUrl: 'app/views/NewEditQuiz.html'
         })
+        .when('/importQuizz', {
+            controller: 'ImportQuizController',
+            templateUrl: 'app/views/ImportQuizz.html'
+        })
         .when('/', {
             controller: 'LoginController',
             templateUrl: 'app/views/LoginPage.html'

@@ -1,0 +1,75 @@
+<!--Toolbar-->
+<div class="card">
+    <div class="toolbar bgc-green-700 tc-white-1">
+
+        <!--Left Toolbar-->
+        <div class="toolbar__left mr+++">
+
+        </div>
+
+        <!--Toolbar title-->
+        <span class="toolbar__label fs-title">Revisator - Ajouter ou modifier un quiz</span>
+
+        <!--Toolbar Buttons-->
+        <div class="toolbar__right">
+
+
+            <!--Disconnect Button Button-->
+            <a href="#/">
+                <button class="btn btn--l btn--white btn--icon" lx-ripple lx-tooltip="Se déconnecter"
+                        tooltip-position="bottom">
+                    <i class="mdi mdi-logout"></i>
+                </button>
+            </a>
+
+        </div>
+
+    </div>
+</div>
+
+<!--Conteneur général-->
+<div flex-container="column">
+
+    <!--Card Ajouter un Quizz-->
+    <div flex-container="row">
+
+        <div flex-item="1">
+        </div>
+
+        <div flex-item="10">
+            <div class="card mt+++ ml+++ mr+++">
+
+                <!--Titre de la card-->
+                <span class="fs-title display-block mt++ ml mb text-center">Importer un Quiz</span>
+                    <div class="p+ pt0">
+                    <lx-file-input label="Browse..." value="file" id="files" ng-model="file" ng-click="test()"></lx-file-input>
+                    </div>
+                <!--Diviseur-->
+                <div class="divider divider--dark"></div>
+
+            </div>
+
+            <!--Bouton Envoyer -->
+            <div flex-container="column" flex-align="space-between center">
+                <div flex-item class="mt mb+">
+                    <!--<a href="#/welcome">-->
+                        <button class="btn btn--m btn--orange btn--raised" ng-click="confirmCreation()">
+                            <span>Envoyer</span>
+                        </button>
+                    <!--</a>-->
+                </div>
+            </div>
+
+
+        </div>
+
+    </div>
+
+
+    <!--Permet de garder un espace en dessous une fois appuyé sur le +-->
+
+    <div flex-item="2" class="mt+++">
+    </div>
+
+</div>
+
