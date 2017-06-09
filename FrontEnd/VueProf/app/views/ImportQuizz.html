@@ -42,20 +42,48 @@
                 <!--Titre de la card-->
                 <span class="fs-title display-block mt++ ml mb text-center">Importer un Quiz</span>
                 {{explicationsDetaillees}}
-                    <input type="file" id="file" name="file"/>
+            </div>
+                <div class="card mt+++ ml+++ mr+++">
+                  <!--  
+                    <div>{{patternTitle}}</div>
+                    <div>{{patternQuestion}} </div>
+                    <div>{{patternComplementaire}}</div>
+                    -->
+                    <div></div>
+                    <code class="prettyprint">
+                        var jsonObj = {
+                            "height" : 6.2,
+                            "width" : 7.3,
+                            "length" : 9.1,
+                            "color" : {
+                                "r" : 255,
+                                "g" : 200,
+                                "b" : 10
+                            }
+                        }
+                    </code>
+                    <div></div> 
+                    </div>
+                    <div class="card mt+++ ml+++ mr+++">
 
+                        <div>
+                        <input type="file" id="file" name="file"/>
+                        </div>
+                        <div>
+                        </div>
+                </div>
                    <!-- <button ng-click="add()">Add</button> -->
                 <!--Diviseur-->
                 <div class="divider divider--dark"></div>
 
-            </div>
+           <!-- </div> -->
 
             <!--Bouton Envoyer -->
             <div flex-container="column" flex-align="space-between center">
                 <div flex-item class="mt mb+">
                     <!--<a href="#/welcome">-->
                         <button class="btn btn--m btn--orange btn--raised" ng-click="add()">
-                            <span>Envoyer</span>
+                            <span>Envoyer Le Quizz</span>
                         </button>
                     <!--</a>-->
                 </div>
