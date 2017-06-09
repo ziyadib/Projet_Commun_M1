@@ -51,16 +51,47 @@
                     -->
                     <div></div>
                     <code class="prettyprint">
-                        var jsonObj = {
-                            "height" : 6.2,
-                            "width" : 7.3,
-                            "length" : 9.1,
-                            "color" : {
-                                "r" : 255,
-                                "g" : 200,
-                                "b" : 10
-                            }
-                        }
+                    {
+                       "title":"Titre du quizz pattern",
+                       "questions":[
+                          {
+                             "questionTitle":"",
+                             "questionAnswer":"",
+                             "correctAnswer":"",
+                             "nombreReponse":""
+                          },
+                          {
+                             "questionTitle":"Titre question 1",
+                             "questionAnswer":{
+                                "1":"Reponse 1 question 1",
+                                "2":"Reponse 2 question 2"
+                             },
+                             "correctAnswer":{
+                                "1":true
+                             },
+                             "nombreReponse":2
+                          },
+                          {
+                             "questionTitle":"Titre question 2",
+                             "questionAnswer":{
+                                "1":"Reponse 1 question 2",
+                                "2":"Reponse 2 question 2"
+                             },
+                             "correctAnswer":{
+                                "1":true
+                             },
+                             "nombreReponse":2
+                          }
+                       ],
+                       "year":{
+                          "idNiveau_etude":4,
+                          "niveau":"BAC +4"
+                       },
+                       "matiere":{
+                          "nom":"Nom de la matiere"
+                       },
+                       "nbOfQuestions":2
+                    }
                     </code>
                     <div></div> 
                     </div>

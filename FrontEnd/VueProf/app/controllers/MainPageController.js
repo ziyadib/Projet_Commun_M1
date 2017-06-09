@@ -103,20 +103,39 @@ angular.module('RevisatorProfApp')
                         console.log("voici les questions");
                         console.log(questions);
                          var doc = new jsPDF();
-                         var str=quiz.nom+"\n\n";
+                         //doc.setFillColor(0, 204, 68);
+                         var str=["Revisator quizz: "+quiz.nom+"\n\n"];
+                        // doc.lines([[2,2],[-2,2]], 212,110, 10);
+                         var cpt=0
                         //edition du pdf
                         for(var i=0; i<questions.questions.length;i++){
-                            str=str+(i+1)+") "+questions.questions[i].question+"\n";
-                           // doc.text(questions.questions[i].question+"\n",10,10);
-                           str=str+"\n";
+                            //console.log("i"+i);
+                            if(i >=4 && questions.questions.length > 4 && i%4 ===0 ){
+                                   // console.log(i+"=i vs cpt:"+cpt);
+                                    cpt++;
+                                   //console.log(i+"=i vs i+1:"+(i+1));
+                                   str[cpt]=(i+1)+") "+questions.questions[i].question+"\n";
+                                    
+                            }else {  
+                                    str[cpt]=str[cpt]+(i+1)+") "+questions.questions[i].question+"\n";
+                                    //console.log("str: "+str[cpt]);
+                                    // doc.text(questions.questions[i].question+"\n",10,10);
+                            }
+                           str[cpt]=str[cpt]+"\n";
                             for(var j=0; j<questions.questions[i].reponse.length;j++){
                                // doc.text(questions.questions[i].reponse[j].reponse+"\n",50,10);
-                               str=str+questions.questions[i].reponse[j].reponse+"\n";
+                               str[cpt]=str[cpt]+questions.questions[i].reponse[j].reponse+"\n";
                             }
-                            str=str+"\n";
+                             //console.log("str + question: "+str[cpt]);
+                            str[cpt]=str[cpt]+"\n";
                         }
-                        console.log(str);
-                        doc.text(str,10,10);
+                        //ecriture du pdf
+                        for(var i=0; i<=cpt; i++){
+                            //console.log("cpt:"+cpt+"\n str:"+str[i]);
+                            doc.text(str[i],10,10);
+                            doc.addPage();
+                        }
+                        //envoie du pdf
                         doc.save(quiz.nom+".pdf");
 
             });
