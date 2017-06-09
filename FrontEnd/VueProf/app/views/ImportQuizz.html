@@ -41,9 +41,10 @@
 
                 <!--Titre de la card-->
                 <span class="fs-title display-block mt++ ml mb text-center">Importer un Quiz</span>
-                    <div class="p+ pt0">
-                    <lx-file-input label="Browse..." value="file" id="files" ng-model="file" ng-click="test()"></lx-file-input>
-                    </div>
+                {{explicationsDetaillees}}
+                    <input type="file" id="file" name="file"/>
+
+                   <!-- <button ng-click="add()">Add</button> -->
                 <!--Diviseur-->
                 <div class="divider divider--dark"></div>
 
@@ -53,7 +54,7 @@
             <div flex-container="column" flex-align="space-between center">
                 <div flex-item class="mt mb+">
                     <!--<a href="#/welcome">-->
-                        <button class="btn btn--m btn--orange btn--raised" ng-click="confirmCreation()">
+                        <button class="btn btn--m btn--orange btn--raised" ng-click="add()">
                             <span>Envoyer</span>
                         </button>
                     <!--</a>-->

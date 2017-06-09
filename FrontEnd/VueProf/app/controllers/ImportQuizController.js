@@ -4,35 +4,33 @@
 
 angular.module('RevisatorProfApp')
     .controller('ImportQuizController', function ($scope, $http, sharedStorageService, $location, LxNotificationService) {
+        var texteintroductif = "Ce module a pour objectif de vous permettre d'importer vos propres quiz merci de respecter \n le pattern ci-dessous " +$scope.quiz;
+        $scope.explicationsDetaillees =texteintroductif;
+        $scope.test ="toz";
+    $scope.add = function() {
+        var f = document.getElementById('file').files[0],
+            r = new FileReader();
 
-       /* $scope.upload = function(_newfile){
-            console.log("voicciiii eeeeeeee"+_newfile);
-        }
-*/
-        $scope.test = function(){
-            console.log("je ressens qlqchose");
-        }
-        console.log($scope.file);
-        // Fonction appelée lors de l'appui sur le bouton de création du quiz
-        $scope.confirmCreation = function () {
+        r.onloadend = function(e) {
+              var data =e.target.result;
+              console.log("data normale"+data);
 
-            $scope.formVerification();
-            if ($scope.isFormNotFilledCorrectly === false) {
-                for (i = 1; i <= $scope.numberOfQuestions; i++) {
-                    $scope.quiz.questions[i].nombreReponse = $scope.nbOfAnswer[i];
-                }
-                $scope.quiz.nbOfQuestions = $scope.numberOfQuestions;
-                $http.post('http://localhost:8080/ajouterQuizz', JSON.stringify($scope.quiz)).then(function (response) {
-                    LxNotificationService.success('Votre quiz a bien été créé');
-                    $location.path("/welcome");
-                }, function () {
-                    LxNotificationService.error('Impossible de contacter le serveur');
-                });
-            }
-        };
+            $http.post('http://localhost:8080/ajouterQuizz',data).then(function (response) {
+                        LxNotificationService.success('Votre quiz a bien été créé');
+                        $location.path("/welcome");
+                    }, function () {
+                        LxNotificationService.error('Impossible de contacter le serveur');
+                    });
+            
+        }
+        var buffer =r.readAsText(f);
+          //  console.log(buffer);
+    }
+
+
 
         $scope.quiz = {
-            title: "",
+            title: "titre du quizz",
             questions: [{
                 questionTitle: "",
                 questionAnswer: "",

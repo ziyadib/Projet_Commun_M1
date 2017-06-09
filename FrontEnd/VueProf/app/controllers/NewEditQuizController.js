@@ -97,12 +97,13 @@ angular.module('RevisatorProfApp')
                     $scope.quiz.questions[i].nombreReponse = $scope.nbOfAnswer[i];
                 }
                 $scope.quiz.nbOfQuestions = $scope.numberOfQuestions;
-                $http.post('http://localhost:8080/ajouterQuizz', JSON.stringify($scope.quiz)).then(function (response) {
+                console.log(JSON.stringify($scope.quiz));
+               /*$http.post('http://localhost:8080/ajouterQuizz', JSON.stringify($scope.quiz)).then(function (response) {
                     LxNotificationService.success('Votre quiz a bien été créé');
                     $location.path("/welcome");
                 }, function () {
                     LxNotificationService.error('Impossible de contacter le serveur');
-                });
+                });*/
             }
         };
 
