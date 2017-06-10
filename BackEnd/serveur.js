@@ -4,8 +4,8 @@ var mysql = require('mysql');
 var cors = require('express-cors');
 var bodyParser = require('body-parser');
 var userId;
-//------- mode multi joueur --------
-var userConnected =[/*'kador','azatote','tahmirin'*/];
+//------- mode multi joueurs --------
+var userConnected =[];
 var resultats = [];
 //var http = require('http').Server(app);
 //var io = require('socket.io').(http);
@@ -362,6 +362,53 @@ app.get('/statsG',function(req, res){
 	 });
 });
 */
+
+// A voter
+app.post('/listeQuizz/aVoter', function(req,res){
+    userId =req.headers.authorization;
+    console.log("req.body.idquizz"+req.body.idquizz);
+    console.log("req.body"+req.body);
+    console.log("req"+req);
+    connection.query("INSERT INTO `aVoter`(`id_etudiant`, `id_quizz`) VALUES ("+userId+","+mysql.escape(req.body.idquizz)+")",function(err, rows, fields){
+        if(!err){
+            res.status(200).send();
+            console.log("somatoline ca fonctionne");
+        }
+        else {
+            console.log(err);
+            res.status(404).json("a deja voter pour ce quizz");
+        }
+    });
+});
+
+//transmettre les scores de chaque quizz
+app.get('/listeQuizz/aVoter/score',function(req, res){
+    //console.log("coucou je vais te fournir le score des quizz");
+    connection.query("SELECT id_quizz, count(*) as nbVotes FROM aVoter GROUP BY id_quizz",function(err, rows, fields){
+        if(!err){
+            console.log(rows);
+            res.status(200).json(rows);
+        }else
+            res.status(405).json("error score aVoter");
+    });
+});
+//supprimer le vote d'un utilisateur
+app.delete('/listeQuizz/deVoter/:id_q', function(req, res) {
+        res.status(200).send();
+});
+
+app.param('id_q', function(req, res, next, id){
+    console.log("i am right here baby");
+    userId = req.headers.authorization; //recuperation de l'id
+    connection.query("delete from aVoter where id_etudiant= "+userId+" and id_quizz ="+id+";", function(err, rows, fileds){
+    if(!err){
+
+        next();
+    }else{
+        res.status(405).send("error delete quizz");
+    }
+  });
+ });
 //__________________________________________________Inscription__________________________________________________________
 
 app.post('/vuep/inscription', function(req,res){
@@ -487,11 +534,13 @@ io.sockets.on('connection', function (socket, pseudo) {
         }); 
         socket.on('ResultatQuizz',function(message){
             console.log("Hey j'ai reçu les resultats les voici:"+message.bonneReponse);
+
             resultats.push(message);
             console.log("le tableau resultatS : "+resultats);
                 console.log("length"+resultats.length);
             if(resultats.length > 1){ // si on a reçu les deux réponses de nos joueurs on diffuse pour affichage
                     console.log("hey je broadcast les résultats petit!");
+                    //message.joueur= userConnected[];
                     socket.broadcast.emit("resultats",resultats);
                     socket.emit("resultats",resultats);
                     //comparer les resultats et afficher un message sympatoches si = match nul sinon mess pour gagnant et perdant

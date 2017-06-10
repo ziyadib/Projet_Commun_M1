@@ -59,6 +59,19 @@
                     <a ng-href="#quizz/{{quizz.idQuizz}}">
                         <lx-button lx-color="orange" lx-type="flat">{{quizz.nom}}</lx-button>
                     </a>
+                    <div class="list-row__secondary">
+                    <div flex-container="row">
+                       <button class="btn btn--m btn--black btn--icon" ng-click="aVoter(quizz)" lx-ripple lx-tooltip="attributer une etoile pour ce quizz">
+                            <i class="mdi mdi-plus"></i>
+                        </button>
+                        <div class="p+">
+                        {{quizz.score}}
+                         <lx-icon lx-id="star-outline" lx-size="s" lx-color="yellow" lx-type="flat"></lx-icon>
+                         </div>
+                        <button class="btn btn--m btn--black btn--icon" ng-click="deVoter(quizz)" lx-ripple lx-tooltip="retirer votre vote de ce quizz">
+                            <i class="mdi mdi-minus"></i>
+                        </button>
+                    </div>
 
                 </li>
             </ul>

@@ -17,6 +17,24 @@
                             <strong class="fs-headline display-block">{{question}}</strong>
                         </div>
               -->
+<!--<span id="chronotime">0:00:00:00</span>
+<form name="chronoForm">
+    <input type="button" name="startstop" value="start!" ng-click="chronoStart()" />
+    <input type="button" name="reset" value="reset!" ng-click="chronoReset()" />
+</form>-->
+
+<form name="forsec">
+<input type="text" size="3" name="secb"> minute(s)
+<input type="text" size="3" name="seca"> secondes
+<input type="text" size="3" name="secc"> dixièmes
+
+
+<input type="button" value="Chrono" ng-click="chrono()">
+<input type="button" value="RaZ" ng-click="rasee()"> 
+<input type="button" value="Tempo" ng-click="clearTimeout(compte)">
+</form>
+
+
         </div>
 
 
