@@ -72,7 +72,7 @@ resultatController.controller('duelResultatCtrl', function ($scope,$http,$routeP
     socket.emit("ResultatQuizz",$scope.resultatPourServeur);
 
     socket.on("resultats",function(message){
-        LxNotificationService.alert("Resultats:","La partie est terminee voici les resultats\n"+message[0].bonneReponse+"/"+message[0].total+"\n vs \n"+message[1].bonneReponse+"/"+message[1].total, "ok", function(answer)
+        LxNotificationService.alert("Resultats:","La partie est terminee voici les resultats\n"+message[0].user+": "+((message[0].bonneReponse/message[0].total)*100)+"%\n vs \n"+message[1].user+": "+((message[1].bonneReponse/message[1].total)*100)+"%", "ok", function(answer)
             {
                 LxNotificationService.notify('Vous pouvez retourner au tableau de bord, Merci');
             });

@@ -9,48 +9,19 @@
 
         <!--Toolbar title-->
         <span class="toolbar__label fs-title">Choisir son quizz</span>
-
+        <div class="toolbar__right">
+             <a ng-href="#tableauDeBord">
+                <button href="#" class="btn btn--m btn--white btn--flat" lx-ripple>Retour au tableau de bord</button>
+            </a>
+        </div>
     </div>
 </div>
-
-
-
-<!--
-<div class="p+" flex-container="row" flex-gutter="24" flex-wrap>
-    <div flex-item="6">
-
-        <ul class="list">
-
-            <li class="list-row" ng-repeat="quizz in listeQuizz.quizz">
-                <a ng-href="#quizz/{{quizz.id}}">
-                    <lx-button  lx-color="orange" lx-type="flat">{{quizz.intitule}}</lx-button>
-                </a>
-            </li>
-
-        </ul>
-    </div>
-</div>
-
-
-  <ul class="list">
-
-            <li class="card m+ p+" flex-container="column" flex-align="space-between center" ng-repeat="matiere in matieres.matieres">
-                <div flex-item>
-                    <a ng-href="#listeQuizz/{{matiere.id}}">
-                        <lx-button lx-color="orange" lx-type="flat">{{matiere.intitule}}</lx-button>
-                    </a>
-                </div>
-            </li>
-
-        </ul>
--->
-
 
 <div class="p+" flex-container="column" flex-align="space-between center">
 
     <div flex-item flex-item-order="1">
         <div class="p+">
-
+                <span>Vous êtes l'hôte de la partie, Merci de choisir le quizz du défi :</span>
 
             <ul class="list">
                 <li class="card m+ p+" flex-container="column" flex-align="space-between center"

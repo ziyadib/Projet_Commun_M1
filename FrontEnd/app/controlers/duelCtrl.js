@@ -1,7 +1,7 @@
 
 
 var duelCtrl = angular.module('duelCtrl', ['btford.socket-io']);
-duelCtrl.controller('duelCtrl', function ($scope,$http,$routeParams) {
+duelCtrl.controller('duelCtrl', function ($scope,$http,$routeParams,LxNotificationService) {
     console.log("let's get ready socket io");
 
     var socket = io.connect('http://localhost:8080');
@@ -43,9 +43,16 @@ duelCtrl.controller('duelCtrl', function ($scope,$http,$routeParams) {
             };*/
 
     socket.on('ready', function(message,socket) {
-        
+           /*     LxNotificationService.alert("Veuillez patienter",message, "ok", function(answer)
+            {
+                
+            });*/
+             LxNotificationService.notify('Veuillez patienter l\'hote choisi le quizz', undefined, undefined, 'yellow', 'Ok', function()
+                {
+                    LxNotificationService.notify('Callback');
+                });
         console.log("notif hote choisi quizz "+message);
-        alert(message); 
+      //  alert(message); 
     });
 
     socket.on('letsgo', function(message,socket) {

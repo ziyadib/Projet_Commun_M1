@@ -55,19 +55,23 @@
             <ul class="list">
                 <li class="card m+ p+" flex-container="column" flex-align="space-between center"
                     ng-repeat="quizz in listeQuizz">
+                    <div class="list-row__content">
 
                     <a ng-href="#quizz/{{quizz.idQuizz}}">
                         <lx-button lx-color="orange" lx-type="flat">{{quizz.nom}}</lx-button>
                     </a>
+                    </div>
                     <div class="list-row__secondary">
                     <div flex-container="row">
-                       <button class="btn btn--m btn--black btn--icon" ng-click="aVoter(quizz)" lx-ripple lx-tooltip="attributer une etoile pour ce quizz">
+                       <button class="btn btn--m btn--black btn--icon" ng-click="aVoter(quizz)" lx-ripple lx-tooltip="attribuer une etoile pour ce quizz">
                             <i class="mdi mdi-plus"></i>
                         </button>
-                        <div class="p+">
+                       
                         {{quizz.score}}
-                         <lx-icon lx-id="star-outline" lx-size="s" lx-color="yellow" lx-type="flat"></lx-icon>
-                         </div>
+                        <button class="btn btn--m btn--black btn--icon" ng-click="" ng-disabled="true">
+                            <i class="mdi mdi-star-outline"></i>
+                        </button>
+                         
                         <button class="btn btn--m btn--black btn--icon" ng-click="deVoter(quizz)" lx-ripple lx-tooltip="retirer votre vote de ce quizz">
                             <i class="mdi mdi-minus"></i>
                         </button>

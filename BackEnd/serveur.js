@@ -480,8 +480,10 @@ app.post('/connexion', function(req, res) {
     connection.query("select * from compte where username = " + mysql.escape(req.body.username) + " and password= " + mysql.escape(req.body.password) + " and Type_idType=1;", function(err, rows, fileds){
         if(!err){
             if(rows.length > 0) {
+                if(! userConnected.includes(req.body.username)){
                 userConnected.push(req.body.username);
                 console.log(userConnected);
+                }
 
                 res.status(200).json(rows)
             }
@@ -519,10 +521,7 @@ io.sockets.on('connection', function (socket, pseudo) {
     socket.emit('message', 'Vous êtes bien connecté !');
     // On signale aux autres clients qu'il y a un nouveau venu
     socket.broadcast.emit('listeMatieres', 'Un autre client vient de se connecter ! ');
-    // Dès qu'on nous donne un pseudo, on le stocke en variable de session
-    socket.on('petit_nouveau', function(pseudo) {
-        socket.pseudo = pseudo;
-    });
+    var tmp =0;
    // socket.brodacast.emit('listeQuizz',"le choix du quizz par l hote est en cours");
         socket.on('wichQuizz', function (message) {
             console.log("diffusons le message de ready");
@@ -534,7 +533,7 @@ io.sockets.on('connection', function (socket, pseudo) {
         }); 
         socket.on('ResultatQuizz',function(message){
             console.log("Hey j'ai reçu les resultats les voici:"+message.bonneReponse);
-
+            message.user=userConnected[tmp++];
             resultats.push(message);
             console.log("le tableau resultatS : "+resultats);
                 console.log("length"+resultats.length);
